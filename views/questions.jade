@@ -1,0 +1,100 @@
+extends layout
+
+
+block content
+	script(src='http://code.jquery.com/jquery-1.9.1.js')
+	script(src='/javascripts/noteeditor_client.js')
+	h1= title
+	include bar
+	form(method="POST", action="questions")
+		p
+			label(for="keyword") 考卷包含下列文字<br />
+			input#keyword(name="keyword")
+		p
+			label(for="principle_keyword") 考試類科與等級包含下列文字<br />
+			input#principle_keyword(name="principle_keyword")
+		p
+			label(for="testsheet_name") 考卷名稱<br />
+			input#testsheet_name(name="testsheet_name")
+		p
+			select(id="q_count", name="q_count")
+				-for(var i in q_count_options){
+				option(value="#{q_count_options[i]}") 顯示#{q_count_options[i]}筆題目
+				-}
+		p
+			select(id="q_select", name="q_select")
+				-for(var i in q_select_options){
+				option(value="#{q_select_options[i]}") 依照#{q_select_options[i]}排序
+				-}
+		p
+			select(id="q_type", name="q_type")
+				-for(var i in q_type_options){
+				option(value="#{q_type_options[i]}") 顯示#{q_type_options[i]}
+				-}
+		p
+			input(type="submit", value="搜尋", "name"="search")
+			//form(method="POST", action="questions/make_sheet")
+				//p
+			input(type="submit", value="製作考卷",  "name"="makesheet")		
+	p 目前顯示的是包含關鍵詞：#[#{keyword}]，依照「#{q_select}」模式搜尋，顯示#{q_type}，共#{q_count}筆
+	p 相關關鍵詞：
+	if query_active 
+		//p #{query_word_cnt[0][0]} #{query_word_cnt[1][0]} #{query_word_cnt[2][0]} #{query_word_cnt[3][0]} #{query_word_cnt[4][0]}
+		//p #{query_word_cnt[5][0]} #{query_word_cnt[6][0]} #{query_word_cnt[7][0]} #{query_word_cnt[8][0]} #{query_word_cnt[9][0]}
+		p 共有#{questions.length}個題目
+		if questions
+			table
+				tbody
+					each question,i in questions
+						tr
+							td=(i+1)+" "+question['Q']
+						tr
+							if question['A'].length < 3
+								tr
+									td="(A)" +question['A']
+									td="(B)" +question['B']
+									td="(C)" +question['C']
+									td="(D)" +question['D']
+								
+							else if question['A'].length < 5
+								tr
+									td="(A)" +question['A']
+									td="(B)" +question['B'] 
+								tr
+									td="(C)" +question['C']
+									td="(D)" +question['D']
+							else
+								tr
+									td="(A)" +question['A']
+								tr
+									td="(B)" +question['B']
+								tr
+									td="(C)" +question['C']
+								tr
+									td="(D)" +question['D']
+								
+						//tr
+							//td=question['A']
+						tr 
+							td=""
+							td=""
+							td=question["YEAR"]
+							td=question["GROUP"]
+						//token validation here
+						//-
+							if token
+								tr
+									td
+										
+										label(for="note") 筆記<br />
+										input(name="note", id="note_"+i+'_content')
+										select(id="note_tag_"+i, name="note_tag")
+											-for(var tag in tags){
+												option(value="#{tags[tag]}") #{tags[tag]}
+											-}
+							
+										button(type='button', value="上傳筆記", onClick='onAdd(' + i + ',' + question['QN'] + ')')
+							tr
+								td=""
+
+

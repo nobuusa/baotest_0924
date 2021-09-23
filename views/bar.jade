@@ -1,0 +1,22 @@
+ul.nav
+	//li
+	each name in [{"name":"首頁", "link":"/"},{"name":"註冊", "link":'hello'},{"name":"搜尋題目", "link":'questions'},{"name":"筆記", "link":'note'},{"name":"刷題", "link":"sheet"}]
+		if (menu=="Home")
+			li.active
+				a(href=name['link'])= name['name']
+		else
+			li.barlist
+				a(href=name['link'])= name['name']
+	<br>
+	if token
+		歡迎回來，#{token}
+	else
+		form(method="POST", action="bar")
+			p
+				label(for="username") 帳號<br />
+				input#username(name="username")
+			p
+				label(for="password") 密碼<br />
+				input#password(name="password")
+			p
+				input(type="submit", value="登入")

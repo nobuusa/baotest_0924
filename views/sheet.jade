@@ -1,0 +1,44 @@
+extends layout
+
+
+block content
+	script(src='http://code.jquery.com/jquery-1.9.1.js')
+	script(src='/javascripts/noteeditor_client.js')
+	h1= title
+	include bar
+	if state=="test"
+		form(method="POST", action="sheet")
+			table
+				tbody
+					each question,i in questions
+						tr
+							td=(i+1)+" "+question['Q']
+						tr
+							td
+								input(type="radio", name="question_"+question['QN'], value="A", checked=gender=="male") 
+								|#{question['A']}
+						tr
+							td
+								input(type="radio", name="question_"+question['QN'], value="B", checked=gender=="female") 
+								|#{question['B']}
+						tr
+							td
+								input(type="radio", name="question_"+question['QN'], value="C", checked=gender=="male") 
+								|#{question['C']}
+						tr
+							td
+								input(type="radio", name="question_"+question['QN'], value="D", checked=gender=="female") 
+								|#{question['D']}
+			input(type="submit", value="讀取",  name="load")
+			input(type="submit", value="存檔",  name="save")
+			input(type="submit", value="交卷",  name="grade")
+	if state=="answer"
+		table
+			tbody
+				tr
+					td="得分: " + score
+				each result in results
+					each row in result
+						tr
+							td=row
+						

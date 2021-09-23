@@ -1,0 +1,37 @@
+extends layout
+
+block content
+	include bar
+	h1 這是註冊頁面星爆氣流斬
+	form(method="POST", action="hello")
+		p
+			這裡要做Facebook註冊<br />
+		p
+			這裡要做Google註冊<br />
+		p
+			label(for="username") 帳號<br />
+			input#username(name="username")
+		p
+			label(for="password") 密碼<br />
+			input#password(name="password")
+		p
+			label(for="name") 姓名<br />
+			input#name(name="name")
+		p
+			label(for="email") 電子郵件<br />
+			input#email(name="email")
+		p
+			label(for="stats") 在學／就職（*改成下拉式）<br />
+			input#stats(name="stats")			
+		p
+			label(for="School_name") 就讀／畢業學校*<br />
+			input#School_name(name="School_name")
+		p
+			label(for="principle") 就讀／畢業科系*<br />
+			input#principle(name="principle")
+		p
+			label(for="Testing_00") 主要報考類科*<br />
+			input#Testing_00(name="Testing_00")
+		p
+			input(type="submit", value="註冊")
+			//input(type="submit", value="登入")

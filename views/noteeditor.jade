@@ -1,0 +1,7 @@
+script(src='http://code.jquery.com/jquery-1.9.1.js')
+script(src='/javascripts/noteeditor_client.js')
+
+form(method="POST", action="questions/add_note")
+	label(for="note") 筆記<br />
+	input#note(name="note")
+	input(type="submit", value="上傳筆記")

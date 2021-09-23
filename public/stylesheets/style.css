@@ -1,0 +1,26 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00dbcd;
+  font-size: 24px;
+  /*#00B7FF;*/
+}
+
+li.barlist{
+    margin: 0;
+    padding: 0 43px;
+    float: left;
+    display: inline;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    background-color:#1D438A;
+    border-color: white ;
+    border-width:1px; 
+    border-style:solid;
+    color: black;
+
+}

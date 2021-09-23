@@ -1,0 +1,1 @@
+mongoimport --uri mongodb+srv://bao:baobaoc8763@cluster0.g1xzr.mongodb.net/myFirstDatabase --collection questions --type json --file $1 --jsonArray

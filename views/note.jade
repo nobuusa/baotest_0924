@@ -1,0 +1,25 @@
+extends layout
+
+block content
+	include bar
+	if token
+		table
+		each questions, tag in notes
+			標籤: #{tag} <br /><br />
+			each question in questions
+				tr
+					td=question['question']['Q']
+				<br />
+				tr
+					td=question['content']
+				<br />
+		h1 新增標籤
+		form(method="POST", action="note")
+			p
+				label(for="content") 標籤<br />
+				input#content(name="content")
+			p
+				input(type="submit", value="新增")
+	else
+		p #{token}
+		h1 請先登入
