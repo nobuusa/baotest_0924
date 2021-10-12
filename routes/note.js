@@ -20,6 +20,7 @@ router.get('/', function(req, res, next) {
   tags = [] ;
   User.find({username:req.session.token}, 
     function(err, user){
+      my_tags = []
       my_tags = user[0].tags
       Notebook.find({username:req.session.token},
         function(err, notebook){
