@@ -11,19 +11,18 @@ var _ = require('underscore');
 //Read data. This will be replaced with database in the future
 var filePath = path.join(__dirname, 'data_v3.json');
 var data = fs.readFileSync(filePath, 'utf8');
+var tags = []
 all_questions = JSON.parse(data);
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   console.log('note') ;
   console.log(req.session.token) ;
   my_notes = [] ;
-  tags = [] ;
   User.find({username:req.session.token}, 
     function(err, user){
       my_tags = user[0].tags
       Notebook.find({username:req.session.token},
-        function(err, notebook){
-    
+        function(err, notebook){    
           notes = notebook.map(note => ({'question':all_questions[parseInt(note.question_id)], 'content':note.content, 'tags':note.tags}) ) ;
           my_notes = {} ;
           for(var i in my_tags){
