@@ -132,7 +132,7 @@ router.post('/', function(req, res, next) {
     function(err, user){
 	tags = user[0].tags ;
 	console.log("tags") ;
-		console.log(tags) ;
+	console.log(tags) ;
     	console.log("questions") ;
 			//for debugging
 			console.log(token) ;
