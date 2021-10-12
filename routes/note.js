@@ -16,14 +16,14 @@ all_questions = JSON.parse(data);
 router.get('/', function(req, res, next) {
   console.log('note') ;
   console.log(req.session.token) ;
-  tags = [] ;
   my_notes = [] ;
+  tags = [] ;
   User.find({username:req.session.token}, 
     function(err, user){
-      my_tags = []
       my_tags = user[0].tags
       Notebook.find({username:req.session.token},
-        function(err, notebook){    
+        function(err, notebook){
+    
           notes = notebook.map(note => ({'question':all_questions[parseInt(note.question_id)], 'content':note.content, 'tags':note.tags}) ) ;
           my_notes = {} ;
           for(var i in my_tags){
