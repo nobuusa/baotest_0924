@@ -130,7 +130,7 @@ router.post('/', function(req, res, next) {
 	token = req.session.token ;
 	User.find({username:token}, 
     function(err, user){
-	tags = 1 ; 
+	tags = User[0]; 
 	//tags = user[0].tags ;
     	console.log("questions") ;
 			//for debugging
