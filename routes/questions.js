@@ -131,7 +131,6 @@ router.post('/', function(req, res, next) {
 	User.find({username:token}, 
     function(err, user){
 	tags = user[0].tags ;
-	tags = "fuck" ; 
     	console.log("questions") ;
 			//for debugging
 			console.log(token) ;
