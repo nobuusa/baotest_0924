@@ -10,7 +10,6 @@ var Notebook = require('../models/notebook');
 var _ = require('underscore');
 //const fs = require('fs');
 //var path = require('path');
-let tags;
 
 //Read data. This will be replaced with database in the future
 //var filePath = path.join(__dirname, 'data_v3.json');
@@ -131,6 +130,7 @@ router.post('/', function(req, res, next) {
 	token = req.session.token ;
 	User.find({username:token}, 
     function(err, user){
+	var tags;
 	tags = user[0].tags ;
     	console.log("questions") ;
 			//for debugging
