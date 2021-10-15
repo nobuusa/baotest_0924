@@ -6,7 +6,7 @@ var Question = require('../models/question');
 
 var _ = require('underscore');
 var router = express.Router();
-
+var tags = [] ;
 
 router.get('/', function(req, res, next) {
   //res.render('index', { title: 'Express' });
@@ -75,7 +75,7 @@ router.post('/', function(req, res, next) {
 	token = req.session.token ;
 	User.find({username:token}, 
     function(err, user){
-    	tags = user[0].tags ;
+    	//tags = user[0].tags ;
     	console.log("sheet") ;
 			//for debugging
 		  //console.log(req.query) ;
