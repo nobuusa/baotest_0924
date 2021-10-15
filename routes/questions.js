@@ -8,6 +8,10 @@ var TestSheet = require('../models/testsheet');
 var Question = require('../models/question');
 var Notebook = require('../models/notebook');
 var _ = require('underscore');
+
+//defination
+var tags = [];
+
 //const fs = require('fs');
 //var path = require('path');
 
@@ -130,7 +134,7 @@ router.post('/', function(req, res, next) {
 	token = req.session.token ;
 	User.find({username:token}, 
     function(err, user){
-	tags = user[0].tags ;
+	//tags = user[0].tags ;
     	console.log("questions") ;
 			//for debugging
 			console.log("tags") ;
