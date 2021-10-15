@@ -11,7 +11,7 @@ var Notebook = require('../models/notebook');
 var _ = require('underscore');
 //const fs = require('fs');
 //var path = require('path');
-var tags = [];
+var tags = [] ;
 
 //Read data. This will be replaced with database in the future
 //var filePath = path.join(__dirname, 'data_v3.json');
