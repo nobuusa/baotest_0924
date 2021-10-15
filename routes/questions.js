@@ -7,13 +7,11 @@ var User = require('../models/user');
 var TestSheet = require('../models/testsheet');
 var Question = require('../models/question');
 var Notebook = require('../models/notebook');
+
 var _ = require('underscore');
-
-//defination
-var tags = [];
-
 //const fs = require('fs');
 //var path = require('path');
+var tags = [];
 
 //Read data. This will be replaced with database in the future
 //var filePath = path.join(__dirname, 'data_v3.json');
@@ -134,11 +132,9 @@ router.post('/', function(req, res, next) {
 	token = req.session.token ;
 	User.find({username:token}, 
     function(err, user){
-	//tags = user[0].tags ;
+    	//tags = user[0].tags ;
     	console.log("questions") ;
 			//for debugging
-			console.log("tags") ;
-			console.log(tags) ;
 			console.log(token) ;
 			console.log(user) ;
 		  console.log(req.query) ;
